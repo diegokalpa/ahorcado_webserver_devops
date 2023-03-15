@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>HTML</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+    <center><h1 style="color:rgb(6, 6, 6)">Hangman</h1></center>
+
+
+    <form method="POST" action="{{url_for('palabra_aleatoria')}}">
+            <label for="intentos">Escribe numero de intentos</label>
+            <input type="number" id="quantity" name="intentos" min="1" max="10">
+            <!-- <center><h1>Tu Tablero es: {{ tablero }}</h1></center> -->
+    </form>
+
+    <form method="POST" action="{{url_for('pedir_letra')}}">   
+            <label for="letra">Escribe una letra</label>
+            <input type="text" name="letra"><br/>
+            <!-- <center><h1>Tu Tablero es: {{ tablero }}</h1></center> -->
+            <center><h1>Tu letra es: {{ letra }}</h1></center>
+            <center><h1>Tu Palabra completa de {{ longitud_aleatoria }} letras es: {{ palabra_completa }}</h1></center>
+            <center><h1>Tus letras falladas son: {{ letras_incorrectas }}</h1></center>
+            <center><h2 style="color:rgb(255, 28, 28)">El Numero de intentos que tienes es de: {{ intentos }}</h1></center>
+    </form>
+
+    <form method="POST" action="{{url_for('procesar_letra')}}">
+        <center><h1>Tu Tablero es: {{ tablero }}</h1></center>        
+    </form>
+
+    <form method="GET" action="{{url_for('numero_intentos')}}">
+        <h1>La palabra era: {{ aleatoria }}</h1>
+        <h2>PERDISTE EL JUEGO</h2>
+    </form>
+
+    <form method="POST" action="{{url_for('fin_juego')}}">
+        <center><h1> GANASTE EL JUEGO </h1></center>        
+    </form>
+
+</body>
+</html>
+
