@@ -12,8 +12,8 @@ def palabra_aleatoria():
 
     palabras = []
   
-    with open("archivos/data.txt", "r",encoding = "utf-8") as f:
-    # with open("venv/archivos/data.txt", "r",encoding = "utf-8") as f:
+    #with open("archivos/data.txt", "r",encoding = "utf-8") as f:
+    with open("venv/archivos/data.txt", "r",encoding = "utf-8") as f:
         palabras = [c for c in f]
     global aleatoria   # Esta global me permite usar la variable en cualquier parte
     aleatoria = random.choice(palabras)
@@ -115,5 +115,6 @@ def run():
 
 
 if __name__ == '__main__':
-    app.run(port = 5100, debug=True)
+    # app.run(port = 5100, debug=True)
+    app.run(port = 5100)
     # run()
