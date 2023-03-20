@@ -83,3 +83,18 @@ spec:
       targetPort: 3000
   selector:
     app: grafana
+---
+
+#Se crea LoadBalancer para poder acceder a Grafana desde afuera.
+apiVersion: v1
+kind: Service
+metadata:
+  name: lb-prometheus
+  namespace: istio-system
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 3001
+  selector:
+    app: prometheus
