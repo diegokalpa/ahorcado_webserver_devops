@@ -95,6 +95,6 @@ spec:
   type: LoadBalancer
   ports:
     - port: 80
-      targetPort: 3001
+      targetPort: 9090
   selector:
     app: prometheus
