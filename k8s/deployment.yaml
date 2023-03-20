@@ -80,6 +80,7 @@ spec:
       targetPort: 5000
   selector:
     app: label-ahorcado
+<<<<<<< HEAD
 
 #Se crea LoadBalancer para poder acceder a Grafana desde afuera.
 apiVersion: v1
@@ -94,3 +95,5 @@ spec:
       targetPort: 3000
   selector:
     app: grafana
+=======
+>>>>>>> 28888b49d5035bab272135cfc9732ce31e574800
