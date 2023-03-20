@@ -1,0 +1,68 @@
+#Creacion de Namespace
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-ahorcado
+  labels:
+    app: label-ahorcado
+
+---
+#Creacion de Deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ahorcado-app
+  namespace: ns-ahorcado
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: label-ahorcado
+  template:                     #Desde aqui se construye el pod
+    metadata:
+      labels:
+        app: label-ahorcado
+    spec:
+      containers:
+      - name: ahorcado
+        image: diegokalpa/ahorcado:v1
+        ports:
+        - containerPort: 80
+
+---
+#Aqui empieza a crearse el servicio de tipo ClusterIP
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-ahorcado
+  namespace: ns-ahorcado
+  labels:
+    app: label-ahorcado
+spec:
+  type: ClusterIP
+  selector:
+    app: label-ahorcado
+  ports:
+    - protocol: TCP
+      port: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-nodeport-ahorcado
+  namespace: ns-ahorcado
+  labels:
+    app: label-ahorcado
+spec:
+  type: NodePort
+  selector:
+    app: label-ahorcado
+  ports:
+    - protocol: TCP
+      port:       80        #puerto donde estara escuchando el servicio
+      targetPort: 5000      #puerto donde escucha la app
