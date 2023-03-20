@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: ahorcado
-        image: diegokalpa/ahorcado:v1
+        image: diegokalpa/ahorcado:v2
         ports:
         - containerPort: 80
 

@@ -23,7 +23,7 @@ env:
   GKE_ZONE: us-central1  # TODO: update to cluster zone.
   DEPLOYMENT_NAME: app_hangman # TODO: update to deployment name
   REPOSITORY: diegokalpa/ahorcado_webserver_devops # TODO: update to Artifact Registry docker repository
-  IMAGE: v1
+  IMAGE: v2
   # docker_username: ${{ secrets.DOCKERHUB_USERNAME }}
   # docker_pass: ${{ secrets.DOCKERHUB_TOKEN }}
 
@@ -83,7 +83,7 @@ jobs:
     #     curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
     #     chmod u+x ./kustomize
     # Deploy the Docker image to the GKE cluster
-    
+
 
     - name: Install_GCLOUD_COMPONENTS
       run: |-
